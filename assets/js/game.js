@@ -9,49 +9,55 @@ var enemyAttack = 12;
 
 
 var fight = function (enemyName) {
-  window.alert("Welcome to Robot Gladiators!");
+  while (enemyHealth > 0 && playerHealth > 0) {
 
-var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+    var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
-if (promptFight === "fight" || promptFight === "FIGHT") {
-  
-enemyHealth = enemyHealth - playerAttack;
+    if (promptFight === "skip" || promptFight === "SKIP") {
+      var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
-console.log(
-  playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining. "
-);
+      if (confirmSkip) {
+        window.alert(playerName + " has decided to skip the fight. Goodbye!");
+        playerMoney = playerMoney - 10;
+        console.log("playerMoney", playerMoney)
+        break;
+      }
+    }
 
-if (enemyHealth <= 0) {
-  window.alert(enemyName + " has died ");
-}
-else {
-  window.alert(enemyName + " still has " + enemyHealth + " health left. ");
-}
+    enemyHealth = enemyHealth - playerAttack;
 
-playerHealth = playerHealth - enemyAttack;
-console.log(
-  enemyName + " attacked " + playerName + ". " + playerName + " still has " + playerHealth + " health left. "
-);
+    console.log(
+      playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining. "
+    );
 
-if (playerHealth <= 0) {
-  window.alert(playerName + " has died! ");
-}
-else {
-  window.alert(playerName + " still has " + playerHealth + " health left.");
-}
+    if (enemyHealth <= 0) {
+      window.alert(enemyName + " has died ");
 
-} else if (promptFight === "skip" || promptFight === "SKIP") {
-  var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-  
-  if (confirmSkip) {
-  window.alert(playerName + " has decided to skip the fight. Goodbye!");
-  playerMoney = playerMoney - 2;
-  } 
-  else {
-    fight();
+      playerMoney = playerMoney + 20;
+      break;
+    }
+    else {
+      window.alert(enemyName + " still has " + enemyHealth + " health left. ");
+    }
+
+    playerHealth = playerHealth - enemyAttack;
+    console.log(
+      enemyName + " attacked " + playerName + ". " + playerName + " still has " + playerHealth + " health left. "
+    );
+
+    if (playerHealth <= 0) {
+      window.alert(playerName + " has died! ");
+      break;
+    }
+    else {
+      window.alert(playerName + " still has " + playerHealth + " health left.");
+    }
   }
-}
-}
-for(var i = 0; i < enemyNames.length; i++) {
-  fight(enemyNames[i]);
+};
+
+
+for (var i = 0; i < enemyNames.length; i++) {
+  var pickedEnemyName = enemyNames[i];
+  enemyHealth = 50;
+  fight(pickedEnemyName);
 }
