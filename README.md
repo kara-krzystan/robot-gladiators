@@ -1,7 +1,7 @@
 # Module 3 Project: Robot Gladiators
 
 ## Description
-For this class project we built a simple browser-based game called Robot Gladiators. During the game, the player coaches their robot through a series of fights. They earn cash, gain attack power, and make repairs. The robot's current health points are displayed to the player, game statistics and winnings are logged and saved in the browser.
+For this class project, we built a simple browser-based game called Robot Gladiators. During the game, the player coaches their robot through a series of fights. They earn cash, gain attack power, and make repairs. The robot's current health points are displayed to the player, game statistics and winnings are logged and saved in the browser.
 
 ## Overview of Concepts Learned
 * Fundamentals of JavaScript
